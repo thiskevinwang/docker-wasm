@@ -26,7 +26,7 @@ build: cmd-exists-cargo
 	@cargo build --release --target wasm32-wasi
 
 run: cmd-exists-wasmedge
-	@echo "==> Running with cargo"
+	@echo "==> Running with wasmedge"
 	@wasmedge target/wasm32-wasi/release/docker-wasm.wasm
 
 docker-build: cmd-exists-docker build
