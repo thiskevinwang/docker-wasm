@@ -1,0 +1,16 @@
+[package]
+name = "docker-wasm"
+version = "0.1.0"
+edition = "2021"
+authors = ["Kevin Wang <kwangsan@gmail.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+httpcodec = "0.2.3"
+bytecodec = "0.4.15"
+wasmedge_wasi_socket = "0.4.2"
+
+[[bin]]
+name = "docker-wasm"
+path = "src/main.rs"
