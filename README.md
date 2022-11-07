@@ -18,3 +18,10 @@ curl https://x2swn6lrdcbwuq6fkkxvo2ugpm0esgja.lambda-url.us-east-1.on.aws/echo -
 
 curl https://x2swn6lrdcbwuq6fkkxvo2ugpm0esgja.lambda-url.us-east-1.on.aws/echo/reversed -XPOST -d "hello world"
 ```
+
+Educational links
+
+- https://www.freecodecamp.org/news/edge-cloud-microservices-with-wasmedge-and-rust/
+- https://wasmedge.org/book/en/quick_start/install.html
+- https://github.com/second-state/wasmedge_tensorflow_interface
+- https://github.com/WasmEdge/wasmedge_hyper_demo/tree/main/server
