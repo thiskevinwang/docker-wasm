@@ -6,3 +6,15 @@ It should be run using the new [Docker WASM](https://www.docker.com/blog/docker-
 technical preview.
 
 See [`Makefile`](./Makefile) for various commands to run.
+
+### Live Demo
+
+The project is currently deployed to AWS Lambda + Function URL
+
+> **Warning**: This is not intended to be a stable URL and may change in the future.
+
+```
+curl https://x2swn6lrdcbwuq6fkkxvo2ugpm0esgja.lambda-url.us-east-1.on.aws/echo -XPOST -d "hello world"
+
+curl https://x2swn6lrdcbwuq6fkkxvo2ugpm0esgja.lambda-url.us-east-1.on.aws/echo/reversed -XPOST -d "hello world"
+```
