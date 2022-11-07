@@ -31,7 +31,11 @@ run: cmd-exists-wasmedge
 
 docker-build: cmd-exists-docker build
 	@echo "==> Building with docker"
-	@docker buildx build --platform wasi/wasm32 -t $(TAG) .
+	@docker buildx build --platform linux/amd64 -t $(TAG) .
+
+docker-auth: cmd-exists-aws cmd-exists-docker
+	@echo "==> Authenticating with docker"
+	@aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(REGISTRY)
 
 docker-tag: cmd-exists-docker
 	@echo "==> Tagging docker image"
@@ -42,10 +46,21 @@ docker-push: cmd-exists-docker
 	@echo "==> Pushing docker image"
 	@docker push $(REGISTRY)/$(TAG)
 
-docker-run: cmd-exists-docker
+docker-run-wasm: cmd-exists-docker
 	@echo "==> Running with docker"
 	@docker run -p 8888:8888 \
 	  --rm \
 		--runtime=io.containerd.wasmedge.v1 \
 		--platform=wasi/wasm32 \
 		$(TAG)
+
+docker-run: cmd-exists-docker
+	@echo "==> Running with docker"
+	@docker run -p 8888:8888 \
+	  --rm \
+		$(TAG)
+
+.DEFAULT_GOAL := build-run
+build-run: 
+	make docker-build
+	make docker-run
