@@ -33,14 +33,16 @@ docker-build: cmd-exists-docker build
 	@echo "==> Building with docker"
 	@docker buildx build --platform linux/amd64 -t $(TAG) .
 
-docker-auth: cmd-exists-aws cmd-exists-docker
+docker-auth-ecr: cmd-exists-aws cmd-exists-docker
 	@echo "==> Authenticating with docker"
 	@aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(REGISTRY)
 
+
 docker-tag: cmd-exists-docker
 	@echo "==> Tagging docker image"
-	@docker image rm $(REGISTRY)/$(TAG)
+	@docker image rm $(REGISTRY)/$(TAG) || true
 	@docker tag $(TAG) $(REGISTRY)/$(TAG)
+	@echo "  ==> OK"
 
 docker-push: cmd-exists-docker
 	@echo "==> Pushing docker image"

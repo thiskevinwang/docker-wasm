@@ -26,6 +26,7 @@ version = "0.1.0"
 dependencies = [
  "hyper_wasi",
  "tokio_wasi",
+ "wasmedge_tensorflow_interface",
 ]
 
 [[package]]
@@ -368,6 +369,12 @@ name = "wasi"
 version = "0.11.0+wasi-snapshot-preview1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+
+[[package]]
+name = "wasmedge_tensorflow_interface"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f9d119263c7983e469737d6d380e035313fe89b1ce5d0575836662cc3a67740"
 
 [[package]]
 name = "wasmedge_wasi_socket"
